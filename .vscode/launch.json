@@ -2,21 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C++ Launch (Windows)",
-            "type": "cppvsdbg",
+            "name": "Debug",
+            "type": "gdb",
             "request": "launch",
-            "program": "enter program name, for example ${workspaceRoot}/a.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceRoot}",
-            "environment": []
-        },
-        {
-            "name": "C++ Attach (Windows)",
-            "type": "cppvsdbg",
-            "request": "attach",
-            "program": "enter program name, for example ${workspaceRoot}/a.exe",
-            "processId": "${command.pickProcess}"
+            "target": "hello",
+            "cwd": "${workspaceRoot}"
         }
     ]
 }
