@@ -75,7 +75,7 @@ private:
         // get min information entropy
         double entropy = ENTROPY_INF;
         for (set<int>::const_iterator it = dimensions_index.begin(); it != dimensions_index.end(); ++it) {
-            double tmp_entropy = _get_split_entropy(datas_index, *it);
+            double tmp_entropy = _get_entropy(datas_index, *it);
             if (tmp_entropy < entropy) {
                 node->type = *it;
                 entropy = tmp_entropy;
@@ -94,8 +94,9 @@ private:
         }
     }
 
-    // split information entropy: split_entropy = sigma(p*info_entropy(Dj))
-    double _get_split_entropy(set<int>& datas_index, int dimension_index) {
+    // information entropy under a dimension classifier with:
+    // info_entropy_dimension(D) = sigma(p*info_entropy(Dj))
+    double _get_entropy(set<int>& datas_index, int dimension_index) {
         // <dimension_type, <dimension_type_count, <data_type, data_type_count>>>
         unordered_map<int, pair<int, unordered_map<int, int>>> dimension_type_count;
         for (set<int>::const_iterator it = datas_index.begin(); it != datas_index.end(); ++it) {
@@ -124,7 +125,7 @@ private:
         return entropy;
     }
 
-    // information entropy: info_entropy = -sigma(p*log(p))
+    // information entropy: info_entropy(D) = -sigma(p*log(p))
     double _cal_entropy(const vector<int>& numerator) {
         int denominator = 0;
         double entropy = 0.0;
