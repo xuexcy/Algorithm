@@ -12,7 +12,7 @@ using namespace std;
 void generateData(string fileName, int n) {
 	srand((int)time(0));
 	if (ifstream(fileName)) {
-		cout << "file \"" << fileName << "\" exists" << endl;
+		cout << "file \"" << fileName << "\" not exist" << endl;
 		return;
 	}
 	ofstream out(fileName);
