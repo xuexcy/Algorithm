@@ -22,9 +22,6 @@ string dictToString(const vector<string>& dict) {
 }
 
 struct Node {
-    Node(bool exist = false) {
-        this->exist = exist;
-    }
     unordered_map<string, Node*> children;
     bool exist = false;
 };
